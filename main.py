@@ -1,5 +1,4 @@
 import array
-import colorama
 from colorama import Fore
 
 class HammingCode():
@@ -72,7 +71,7 @@ class HammingCode():
         print(Fore.MAGENTA+str(b)+": Location of bits")
         #For writing objects in hamming code
         print(Fore.BLUE+str(self.hc)+": The hamming code")
-        print(Fore.WHITE + "--------------------------------------------------------")
+
     def calcRedundantBits(self,m):
         for i in range(m):
             if (2 ** i >= m + i + 1):
@@ -104,20 +103,48 @@ class HammingCode():
         sayac_parity = 1
         sayac_data = 1
         b = []
+        data=[]
+        parity=[]
+        loop=0
+        reversed_arr=[]
+        for i in reversed(arr):
+            reversed_arr.append(i)
         for i in range(1, len(arr) + 1):
             if ((i & (i - 1) == 0) and i != 0):  # check if a number is a power of two
                 b.append("P" + str(sayac_parity))
+                parity.append(int(reversed_arr[loop]))
                 sayac_parity = sayac_parity + 1
+                loop=loop+1
             else:
                 b.append("D" + str(sayac_data))
+                data.append(int(reversed_arr[loop]))
                 sayac_data = sayac_data + 1
+                loop=loop+1
+        data.reverse()
+        parity.reverse()
+        #print(data)
+        #print(parity)
         b.reverse()
+
+        #for visually better output
+        print(Fore.WHITE + "--------------------------------------------------------")
+        for i in range(len(data), 0, -1):#data
+            print(Fore.RED + " D" + str(i), end="")
+        print(Fore.RED + ": Location names")
+        print(Fore.BLUE + str(data) + ": The given data")
+        print(Fore.WHITE + "--------------------------------------------------------")
+        for i in range(len(parity),0,-1):#parity
+            print(Fore.GREEN+" P"+str(i),end="")
+        print(Fore.GREEN+": Location names")
+        print(Fore.BLUE+str(parity)+": The check bits ")
+        print(Fore.WHITE+"--------------------------------------------------------")
+
         print(Fore.MAGENTA + str(b) + ": Location of bits")
         return arr
 
     def detectError(self,nr):
         print(Fore.WHITE + "--------------------------------------------------------")
-        error = input(Fore.BLUE+"put error:")
+        error = input(Fore.BLUE+"put error(take the hamming code and only change 1 bit manually):")
         print("Error Data is: " + Fore.MAGENTA +error)
         n = len(error)
         res = 0
@@ -144,7 +171,7 @@ else:#created other than 4 data bit
     m = len(data)
     r = object.calcRedundantBits(m)
     arr =object.posRedundantBits(data, r)
-    hammingcode =object.calcParityBits(arr, r)
-    print(Fore.BLUE+ hammingcode+": The hamming code is")
+    hammingcode = object.calcParityBits(arr, r)
+    print(Fore.BLUE+ hammingcode+": The hamming code")
     correction = object.detectError(r)
     print("The position of error is: " + str(correction))
