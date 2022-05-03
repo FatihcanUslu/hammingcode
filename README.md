@@ -71,3 +71,5 @@ c3 = parity(4-7, 12-15, 20-23 and so on)
 Step 4 − Error detection and correction
 
 The decimal equivalent of the parity bits binary values is calculated. If it is 0, there is no error. Otherwise, the decimal value gives the bit position which has error. For example, if c1c2c3c4 = 1001, it implies that the data bit at position 9, decimal equivalent of 1001, has error. The bit is flipped to get the correct message.
+
+Fore used for output coloring. So that users can have a better experience.
