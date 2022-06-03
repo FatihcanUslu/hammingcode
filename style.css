@@ -1,0 +1,72 @@
+* {
+    margin: 10px;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #666;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+#firstmesaj::before,#firstmesaj::after{
+    font-weight: bold;
+    font-family: 'SF Mono', 'Courier New',Courier, monospace;
+    font-size: 45px;
+    color:#ff4473;
+}
+#firstmesaj::before{
+    display: inline-block;
+    pad: 3rem;
+    content: "Hamming Code...";
+}
+#firstmesaj::after{
+    display: inline;
+    content: "i";
+    background: #ff4473;
+    animation:blink 1s infinite;
+}
+#bilgimesaj{
+    font-weight: bold;
+    font-family: 'SF Mono', 'Courier New',Courier, monospace;
+    font-size: 24px;
+}
+#aaaaaa{
+    font-weight: bold;
+    font-family: 'SF Mono', 'Courier New',Courier, monospace;
+    font-size: 24px;
+}
+#aaaaaaa{
+    
+    font-weight: bold;
+    font-family: 'SF Mono', 'Courier New',Courier, monospace;
+    font-size: 24px;
+}
+#errorkismi{
+    display:none
+}
+#table{
+    display: block;
+    margin-top: 20px;
+}
+th,td{
+    border: 1px solid black;
+    padding: 5px;
+}
+#araislemler{
+    display: none;
+}
+@keyframes blink {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
